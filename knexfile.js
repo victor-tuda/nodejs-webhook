@@ -5,13 +5,13 @@ module.exports = {
   development: {
     client: 'mssql',
     connection: {
-      server: 'glip-office.ddns.net',
-      user: "thiago",
+      host: '172.16.20.210',
+      user: 'thiago',
       password: "K7fcX6wM",
-      database: "Vulkan"
-    },
-    options: {
-      port: 49170
+      database: "Vulkan",
+      options: {
+        port: 49170
+      }
     }
   },
 
@@ -32,11 +32,15 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'mssql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: 'glip-office.ddns.net',
+      database: 'Vulkan',
+      user:     'thiago',
+      password: 'K7fcX6wM',
+      options: {
+        port: 49170
+      }
     },
     pool: {
       min: 2,

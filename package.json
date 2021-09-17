@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/victor-tuda/nodejs-webhook#readme",
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "morgan": "^1.10.0"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.95.11"
+    "knex": "^0.95.11",
+    "morgan": "^1.10.0",
+    "mssql": "^7.2.1"
   }
 }

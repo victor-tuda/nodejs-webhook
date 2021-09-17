@@ -10,14 +10,22 @@ require('dotenv').config({
 // Adicionando as comunicações com o banco de dados
 var database = require("./database/index.js")
 
-// Realizando um select no database
-
 // NETILIFY
 exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
         console.log(body);
+        try{
+            body.forEach(obj => {
+                Object.entries(obj).forEach(([key, value]) => {
+                    console.log(`${key} ${value}`);
+                });
+            }
+        )}
+        catch{
+            console.log('Rolou um erro aqui');
+        }
     }
         /*
         try{

@@ -15,7 +15,6 @@ exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
-        console.log(body);
         try{
             body.forEach(obj => {
                 Object.entries(obj).forEach(([key, value]) => {

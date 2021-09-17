@@ -18,7 +18,7 @@ database.select('*').from('Webhook_FDV').then(data => {
 // NETILIFY
 exports.handler = async (event, context) => {
     try{
-        const body = JSON.stringify(event.body);
+        const body = JSON.stringify(JSON.parse(event.body));
         const logbook = body.Logbook[body.Logbook.length - 1];
         console.log(body);
         try{

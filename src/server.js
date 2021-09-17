@@ -22,11 +22,12 @@ exports.handler = async (event, context) => {
         const logbook = body.Logbook[body.Logbook.length - 1];
         console.log(body);
         try{
-            console.log(`Code: ${body.Code}`);
-            for (var attributename in body){
-                console.log(attributename+": "+body[attributename]);
+            body.forEach(obj => {
+                Object.entries(obj).forEach(([key, value]) => {
+                    console.log(`${key} ${value}`);
+                });
             }
-        }
+        )}
         catch{
             console.log('Rolou um erro aqui');
         }

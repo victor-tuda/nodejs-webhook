@@ -20,6 +20,7 @@ exports.handler = async (event, context) => {
     try{
         const body = JSON.stringify(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
+        console.log(body);
         try{
             console.log(`Code: ${body.Code}`);
             for (var attributename in body){

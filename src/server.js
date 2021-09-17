@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
 
         console.log(`Code: ${body.Code}`)
         for (var attributename in body){
-            console.log(attributename+": "+body[attributename]);
+            console.log(attributename+": "+body.attributename);
         }
         }
         /*

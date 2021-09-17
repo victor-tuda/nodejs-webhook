@@ -1,5 +1,5 @@
 // Criando um Debugger Morgan
-//const morgan = require('morgan');
+const morgan = require('morgan');
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({

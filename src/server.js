@@ -12,8 +12,6 @@ var database = require("./database/index.js")
 // Realizando um select no database
 database.select('*').from('Webhook_FDV').then(data => {
     console.log(data);
-}).catch(err => {
-    console.log(err);
 });
 
 // NETILIFY

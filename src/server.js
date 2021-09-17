@@ -18,12 +18,12 @@ database.select('*').from('Webhook_FDV').then(data => {
 // NETILIFY
 exports.handler = async (event, context) => {
     try{
-        const body = JSON.parse(event.body);
+        const body = JSON.stringify(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
 
         console.log(`Code: ${body.Code}`)
         for (var attributename in body){
-            console.log(attributename+": "+body.attributename);
+            console.log(attributename+": "+body[attributename]);
         }
         }
         /*

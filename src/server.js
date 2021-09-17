@@ -13,7 +13,7 @@ var database = require("./database/index.js")
 // NETILIFY
 exports.handler = async (event, context) => {
     try{
-        const body = JSON.parse(event.body);
+        const body = JSON.stringify(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
         try{
             body.forEach(obj => {

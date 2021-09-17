@@ -20,12 +20,16 @@ exports.handler = async (event, context) => {
     try{
         const body = JSON.stringify(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
-
-        console.log(`Code: ${body.Code}`)
-        for (var attributename in body){
-            console.log(attributename+": "+body[attributename]);
+        try{
+            console.log(`Code: ${body.Code}`);
+            for (var attributename in body){
+                console.log(attributename+": "+body[attributename]);
+            }
         }
+        catch{
+            console.log('Rolou um erro aqui');
         }
+    }
         /*
         try{
             database('Webhook_FDV').insert({CODE: body.Code});
@@ -34,9 +38,8 @@ exports.handler = async (event, context) => {
             console.log('Erro de inserção');
         }
         */
-    }
     catch (error){
-        console.log(`Erro de Conexão: ${error}`)
+        console.log(`Erro de Conexão: ${error}`);
     };
 
 }

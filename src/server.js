@@ -17,10 +17,15 @@ database.select('*').from('Webhook_FDV').then(data => {
 
 // NETILIFY
 exports.handler = async (event, context) => {
-    const body = JSON.parse(event.body);
-    const logbook = body.Logbook[body.Logbook.length - 1];
+    try{
+        const body = JSON.parse(event.body);
+        const logbook = body.Logbook[body.Logbook.length - 1];
 
-    database('Webhook_FDV').insert({CODE: body.Code})
-     .then(console.log('Executou'))
+        database('Webhook_FDV').insert({CODE: body.Code})
+        .then(console.log('Executou'))
+    }
+    catch (error){
+        console.log(`Erro de inserção: ${error}`)
+    };
 
-  };
+}

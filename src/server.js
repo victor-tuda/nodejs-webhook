@@ -22,8 +22,9 @@ exports.handler = async (event, context) => {
         const logbook = body.Logbook[body.Logbook.length - 1];
 
         console.log(`Code: ${body.Code}`)
-        for (i=0;i==body.length(); i++){
-            print(body[i])
+        for (var attributename in body){
+            console.log(attributename+": "+body[attributename]);
+        }
         }
         /*
         try{

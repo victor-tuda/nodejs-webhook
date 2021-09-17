@@ -27,6 +27,7 @@
     "knex": "^0.95.11",
     "morgan": "^1.10.0",
     "mssql": "^7.2.1",
-    "netlify-cli": "^6.9.6"
+    "netlify-cli": "^6.9.6",
+    "tedious": "^12.2.0"
   }
 }

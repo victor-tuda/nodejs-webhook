@@ -21,8 +21,8 @@ exports.handler = async (event, context) => {
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
 
-        database('Webhook_FDV').insert({CODE: body.Code})
-        .then(console.log('Executou'))
+        console.log(`Code: ${body.Code}`)
+        database('Webhook_FDV').insert({CODE: body.Code});
     }
     catch (error){
         console.log(`Erro de inserção: ${error}`)

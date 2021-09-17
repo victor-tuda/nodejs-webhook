@@ -22,10 +22,15 @@ exports.handler = async (event, context) => {
         const logbook = body.Logbook[body.Logbook.length - 1];
 
         console.log(`Code: ${body.Code}`)
-        database('Webhook_FDV').insert({CODE: body.Code});
+        try{
+            database('Webhook_FDV').insert({CODE: body.Code});
+        }
+        catch{
+            console.log('Erro de inserção');
+        }
     }
     catch (error){
-        console.log(`Erro de inserção: ${error}`)
+        console.log(`Erro de Conexão: ${error}`)
     };
 
 }

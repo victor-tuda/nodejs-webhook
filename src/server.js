@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
         try{
             body.forEach(obj => {
                 Object.entries(obj).forEach(([key, value]) => {
-                    console.log(`${key} ${value}`);
+                    console.log(`hehe${key} ${value}`);
                 });
             }
         )}

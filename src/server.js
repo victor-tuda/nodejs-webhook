@@ -4,7 +4,7 @@ require('tedious')
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({
-    path: __dirname+'./../.env'
+    path: __dirname + './../.env'
 });
 
 // Adicionando as comunicações com o banco de dados

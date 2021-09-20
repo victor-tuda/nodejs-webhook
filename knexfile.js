@@ -9,9 +9,7 @@ module.exports = {
       user: process.env.USER,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
-      options: {
-        port: parseInt(process.env.PORT, 10)
-      }
+      port: parseInt(process.env.PORT, 10)
     }
   },
 
@@ -38,9 +36,7 @@ module.exports = {
       database: process.env.DATABASE,
       user:     process.env.USER,
       password: process.env.PASSWORD,
-      options: {
-        port: parseInt(process.env.PORT, 10)
-      }
+      port: parseInt(process.env.PORT, 10)
     },
     pool: {
       min: 2,

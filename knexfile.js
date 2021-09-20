@@ -3,12 +3,12 @@
 module.exports = {
 
   development: {
-    client: mssql,
+    client: "mssql",
     connection: {
-      host: glip-office.ddns.net,
-      user: thiago,
-      password: K7fcX6wM,
-      database: Vulkan,
+      host: "glip-office.ddns.net",
+      user: "thiago",
+      password: "K7fcX6wM",
+      database: "Vulkan",
       options: {
         port: parseInt(49170, 10)
       }

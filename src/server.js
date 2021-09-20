@@ -1,6 +1,9 @@
+require('tedious');
+require('mssql');
+
 // Criando um Debugger Morgan
 const morgan = require('morgan');
-require('tedious')
+
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({
@@ -8,7 +11,9 @@ require('dotenv').config({
 });
 
 // Adicionando as comunicações com o banco de dados
-const database = require("./database/index")
+const database = require("/database/index.js")
+
+console.log(database);
 
 // NETILIFY
 exports.handler = async (event, context) => {
@@ -31,6 +36,7 @@ exports.handler = async (event, context) => {
 
         database.select("*").from("Webhook_FDV").then(data => {
             console.log(data);
+            console.log('Cheguei aqui')
         }).catch(err => {
             console.log(err)
         })

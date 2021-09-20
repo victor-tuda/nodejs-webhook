@@ -15,23 +15,39 @@ var database = require("./database/index.js")
 exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
-        const contact =body.Contact;
-        const company = body.Contact.Company;
         const logbook = body.Logbook[body.Logbook.length - 1];
+        // LOOP QUE EU PRECISO CONSERTAR
         try{
-            for (const[key, value] of Object.entries(contact)) {
-                try{
-                    const coluna = "CONTACT_" + key.toUpperCase()
-                    knex('Webhook_FDV').insert({coluna: value})
-                }
-                catch(error){
-                    console.log(`Erro ao inserir a chave ${key}\n${error}`)
-                }
-            }
+            database('Webhook_FDV').insert({CODE: body.Code});
         }
         catch{
-            console.log('Rolou um erro aqui');
+            console.log('Erro em body.Code');
         }
+        try{
+            database('Webhook_FDV').insert({TITLE: body.Title});
+        }
+        catch{
+            console.log('Erro em body.Title');
+        }
+        try{
+            database('Webhook_FDV').insert({VALUE: body.Value});
+        }
+        catch{
+            console.log('Erro em body.Value');
+        }
+        try{
+            database('Webhook_FDV').insert({STATUS: body.Status});
+        }
+        catch{
+            console.log('Erro em body.Status');
+        }
+        try{
+            database('Webhook_FDV').insert({ANSWER: body.Answer});
+        }
+        catch{
+            console.log('Erro em body.Answer');
+        }
+
     }
         /*
         try{

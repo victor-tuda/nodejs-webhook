@@ -21,7 +21,6 @@ exports.handler = async (event, context) => {
             TITLE: body.Title
         }
 
-
         database.insert(dados).into('Webhook_FDV').then(data => {
             console.log(data);
         }).catch(err => {

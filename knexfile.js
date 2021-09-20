@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: process.env.CLIENT,
     connection: {
-      host: '172.16.20.210',
+      host: HOST,
       user: process.env.USER,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,

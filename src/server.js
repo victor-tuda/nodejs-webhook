@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
 
+        /*
         var dados = {
             CODE: body.Code,
             TITLE: body.Title
@@ -26,6 +27,13 @@ exports.handler = async (event, context) => {
         }).catch(err => {
             console.log(err)
         });
+        */
+
+        database.select().from("Webhook_FDV").then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err)
+        })
 
     }
         

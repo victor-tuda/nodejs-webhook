@@ -14,8 +14,8 @@ var database = require("./database/index.js")
 exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
-        const contact = JSON.parse(body.Contact);
-        const company = JSON.parse(body.company);
+        const contact =body.Contact;
+        const company = body.Company;
         const logbook = body.Logbook[body.Logbook.length - 1];
         try{
             for (const[key, value] of Object.entries(contact)) {

@@ -11,7 +11,7 @@ require('dotenv').config({
 });
 
 // Adicionando as comunicações com o banco de dados
-const database = require("/database/index.js")
+var database = require("/database/index.js");
 
 console.log(database);
 

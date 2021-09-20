@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: process.env.CLIENT,
     connection: {
-      host: process.env.HOST,
+      host: '172.16.20.210',
       user: process.env.USER,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
@@ -32,14 +32,14 @@ module.exports = {
   },
 
   production: {
-    client: CLIENT,
+    client: process.env.CLIENT,
     connection: {
-      host: HOST,
-      database: DATABASE,
-      user:     USER,
-      password: PASSWORD,
+      host: process.env.HOST,
+      database: process.env.DATABASE,
+      user:     process.env.USER,
+      password: process.env.PASSWORD,
       options: {
-        port: parseInt(PORT, 10)
+        port: parseInt(process.env.PORT, 10)
       }
     },
     pool: {

@@ -32,14 +32,14 @@ module.exports = {
   },
 
   production: {
-    client: process.env.CLIENT,
+    client: CLIENT,
     connection: {
-      host: process.env.HOST,
-      database: process.env.DATABASE,
-      user:     process.env.USER,
-      password: process.env.PASSWORD,
+      host: HOST,
+      database: DATABASE,
+      user:     USER,
+      password: PASSWORD,
       options: {
-        port: parseInt(process.env.PORT, 10)
+        port: parseInt(PORT, 10)
       }
     },
     pool: {

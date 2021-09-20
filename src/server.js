@@ -1,4 +1,5 @@
 // Criando um Debugger Morgan
+const { default: knex } = require('knex');
 const morgan = require('morgan');
 require('tedious')
 
@@ -15,11 +16,17 @@ exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
         const contact =body.Contact;
-        const company = body.Company;
+        const company = body.Contact.Company;
         const logbook = body.Logbook[body.Logbook.length - 1];
         try{
             for (const[key, value] of Object.entries(contact)) {
-                console.log(key, value)
+                try{
+                    const coluna = "CONTACT_" + toUpperCase(key)
+                    knex('Webhook_FDV').insert({coluna: value})
+                }
+                catch(error){
+                    console.log(`Erro ao inserir a chave ${key}\n${error}`)
+                }
             }
         }
         catch{

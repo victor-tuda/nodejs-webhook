@@ -3,14 +3,14 @@
 module.exports = {
 
   development: {
-    client: process.env.CLIENT,
+    client: mssql,
     connection: {
-      host: HOST,
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE,
+      host: glip-office.ddns.net,
+      user: thiago,
+      password: K7fcX6wM,
+      database: Vulkan,
       options: {
-        port: parseInt(process.env.PORT, 10)
+        port: parseInt(49170, 10)
       }
     }
   },

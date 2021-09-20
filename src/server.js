@@ -15,13 +15,19 @@ exports.handler = async (event, context) => {
     try{
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
-        try{
-            database.select('*').from('Webhook_FDV');
-            console.log("Cheguei até aqui")
+
+        var dados = {
+            CODE: body.Code,
+            TITLE: body.Title
         }
-        catch{
-            console.log('Erro de inserção');
-        }
+
+
+        database.insert(dados).into('Webhook_FDV').then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err)
+        });
+
     }
         
     catch (error){

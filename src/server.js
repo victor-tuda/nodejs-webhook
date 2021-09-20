@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
         const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
         try{
-            database.select('CODE').from('Webhook_FDV');
+            database.select('*').from('Webhook_FDV');
             console.log("Cheguei até aqui")
         }
         catch{

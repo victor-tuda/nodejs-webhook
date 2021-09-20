@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
         try{
             for (const[key, value] of Object.entries(contact)) {
                 try{
-                    const coluna = "CONTACT_" + toUpperCase(key)
+                    const coluna = "CONTACT_" + key.toUpperCase()
                     knex('Webhook_FDV').insert({coluna: value})
                 }
                 catch(error){

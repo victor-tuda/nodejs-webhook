@@ -1,6 +1,5 @@
 // Criando um Debugger Morgan
 const morgan = require('morgan');
-require('tedious')
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({
@@ -34,11 +33,9 @@ exports.handler = async (event, context) => {
         }).catch(err => {
             console.log(err)
         })
-
     }
         
     catch (error){
         console.log(`Erro de Conexão: ${error}`);
     };
-
 }

@@ -25,6 +25,7 @@ exports.handler = async (event, context) => {
         }
         try{
             database('Webhook_FDV').insert({TITLE: body.Title});
+            console.log("Inseriu")
         }
         catch{
             console.log('Erro em body.Title');

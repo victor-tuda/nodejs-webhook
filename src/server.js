@@ -8,7 +8,7 @@ require('dotenv').config({
 });
 
 // Adicionando as comunicações com o banco de dados
-var database = require("./database/index.js")
+var database = require("./database/index")
 
 // NETILIFY
 exports.handler = async (event, context) => {

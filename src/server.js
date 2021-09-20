@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
         });
         */
 
-        database.select().from("Webhook_FDV").then(data => {
+        database.select("*").from("Webhook_FDV").then(data => {
             console.log(data);
         }).catch(err => {
             console.log(err)

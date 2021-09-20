@@ -13,15 +13,13 @@ var database = require("./database/index.js")
 // NETILIFY
 exports.handler = async (event, context) => {
     try{
-        const body = JSON.stringify(event.body);
+        const body = JSON.parse(event.body);
         const logbook = body.Logbook[body.Logbook.length - 1];
         try{
-            body.forEach(obj => {
-                Object.entries(obj).forEach(([key, value]) => {
-                    console.log(`hehe${key} ${value}`);
-                });
+            for (const[key, value] of Object.entries(body)) {
+                console.log(key, value)
             }
-        )}
+        }
         catch{
             console.log('Rolou um erro aqui');
         }

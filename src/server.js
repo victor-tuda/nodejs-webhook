@@ -1,6 +1,7 @@
 // Criando um Debugger Morgan
 const morgan = require('morgan');
 require('tedious')
+require('mssql')
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({

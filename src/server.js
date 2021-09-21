@@ -33,16 +33,16 @@ exports.handler = async (event, context) => {
         const logbook = body.Logbook[body.Logbook.length - 1];
     }
     catch{
-        console.log('Não foi possóvel capturar o body da requisição')
+        console.log('Não foi possível capturar o body da requisição')
     }
 
     let pool = await sql.connect(connStr)
 
     let result = await pool.request()
 
-    insert('code', 'sql.NChar(150)', body.Code, 'CODE');
-    insert('title', 'sql.NChar(150)', body.Title, 'TITLE');
-    insert('value', 'sql.Float', body.Value, 'VALUE');
+    insert('code', 'sql.NChar(150)', body.Code, 'CODE') = await result;
+    insert('title', 'sql.NChar(150)', body.Title, 'TITLE') = await result;
+    insert('value', 'sql.Float', body.Value, 'VALUE') = await result;
 
 
 

@@ -8,13 +8,14 @@ require('dotenv').config({
     path: __dirname + './../.env'
 });
 
+// Adicionando as comunicações com o banco de dados
+var database = require("./database/index.js");
 
 
 // NETILIFY
 exports.handler = async (event, context) => {
-    // Adicionando as comunicações com o banco de dados
-    var database = require("./database/index.js");
     const body = JSON.parse(event.body);
+    console.log(body.Contact)
     const logbook = body.Logbook[body.Logbook.length - 1];
 
     database.select('*').from('Webhook_FDV').then(data => {

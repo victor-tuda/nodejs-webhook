@@ -33,7 +33,11 @@ module.exports = {
 
   production: {
     client: process.env.CLIENT,
-    connection: 'Server="glip-office.ddns.net,49170"; Database="Vulkan"; User Id="thiago"; Password="K7fcX6wM"; trustServerCertificate="true";'
+    connection: {
+      server: process.env.HOST,
+      database: process.env.DATABASE,
+      user:     process.env.USER,
+      password: process.env.PASSWORD,
     },
     pool: {
       min: 2,
@@ -42,4 +46,6 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     }
+  }
+
 };

@@ -19,12 +19,21 @@ exports.handler = async (event, context) => {
     const body = JSON.parse(event.body);
     const logbook = body.Logbook[body.Logbook.length - 1];
 
-    sql.connect(connStr)
-     .then(conn => {
-         console.log("Conectou");
-     })
-     .catch(err => {
-         `ERRO DE CONEXÃO: ${err}`;
-     })
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
 
-  };
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        request.query('select * from Webhook_FDV', function (err, recordset) {
+            if (err) console.log(err)
+
+            // send records as a response
+            console.log(recordset);
+            
+        });
+    });
+
+
+};

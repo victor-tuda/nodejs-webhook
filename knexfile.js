@@ -33,7 +33,7 @@ module.exports = {
 
   production: {
     client: process.env.CLIENT,
-    connection: 'Server=glip-office.ddns.net,49170; Database=Vulkan; User Id=thiago; Password=K7fcX6wM; trustServerCertificate=true;'
+    connection: 'Server="glip-office.ddns.net,49170"; Database="Vulkan"; User Id="thiago"; Password="K7fcX6wM"; trustServerCertificate="true";'
     },
     pool: {
       min: 2,

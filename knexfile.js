@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: process.env.CLIENT,
     connection: {
-      connectionString: "Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;" //String de configuração de conexão
+      connectionString: 'Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;'
     }
   },
 
@@ -28,7 +28,7 @@ module.exports = {
   production: {
     client: process.env.CLIENT,
     connection: {
-      connectionString: "Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;" //String de configuração de conexão
+      connectionString: 'Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;'
     },
     pool: {
       min: 2,

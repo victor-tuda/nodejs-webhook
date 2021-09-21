@@ -28,8 +28,13 @@ function insert (chave, tipo, valor, sql_column){
 
 // NETILIFY
 exports.handler = async (event, context) => {
-    const body = JSON.parse(event.body);
-    const logbook = body.Logbook[body.Logbook.length - 1];
+    try{
+        const body = JSON.parse(event.body);
+        const logbook = body.Logbook[body.Logbook.length - 1];
+    }
+    catch{
+        console.log('Não foi possóvel capturar o body da requisição')
+    }
 
     let pool = await sql.connect(connStr)
 

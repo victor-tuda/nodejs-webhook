@@ -32,13 +32,13 @@ module.exports = {
   },
 
   production: {
-    client: process.env.CLIENT,
+    dialect: process.env.CLIENT,
     connection: {
       server: process.env.HOST,
       database: process.env.DATABASE,
       user:     process.env.USER,
       password: process.env.PASSWORD,
-      port: null
+      port: parseInt(process.env.PORT, 10)
     },
     pool: {
       min: 2,

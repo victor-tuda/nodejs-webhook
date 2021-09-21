@@ -32,13 +32,13 @@ module.exports = {
   },
 
   production: {
-    dialect: process.env.CLIENT,
+    client: "mssql",
     connection: {
-      server: process.env.HOST,
-      database: process.env.DATABASE,
-      user:     process.env.USER,
-      password: process.env.PASSWORD,
-      port: parseInt(process.env.PORT, 10)
+      server: "glip-office.ddns.net",
+      database: "Vulkan",
+      user:     "thiago",
+      password: "K7fcX6wM",
+      port: 49170
     },
     pool: {
       min: 2,

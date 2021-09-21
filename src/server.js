@@ -15,7 +15,6 @@ var database = require("./database/index.js");
 // NETILIFY
 exports.handler = async (event, context) => {
     const body = JSON.parse(event.body);
-    console.log(body.Contact)
     const logbook = body.Logbook[body.Logbook.length - 1];
 
     database.select('*').from('Webhook_FDV').then(data => {

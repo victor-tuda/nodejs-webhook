@@ -2,8 +2,8 @@
 const morgan = require('morgan');
 
 // Criando uma String de Conexão com o Banco de Dados
-const connStr = `Server=${process.env.HOST},${process.env.PORT};Database= ${process.env.DATABASE};User Id= ${process.env.USER};Password=${process.env.PASSWORD};trustServerCertificate=true;`;
-const sql = require("mssql");
+var connStr = `Server=${process.env.HOST},${process.env.PORT};Database= ${process.env.DATABASE};User Id= ${process.env.USER};Password=${process.env.PASSWORD};trustServerCertificate=true;`;
+var sql = require("mssql");
 
 // Adicionando as variáveis de ambiente para desenvolvimento local
 require('dotenv').config({
@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
     const body = JSON.parse(event.body);
     const logbook = body.Logbook[body.Logbook.length - 1];
 
-    sql.connect(config, function (err) {
+    sql.connect(connStr, function (err) {
         if (err) console.log(err);
 
         // create Request object
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
             if (err) console.log(err)
 
             // send records as a response
-            console.log(recordset);
+           console.log(recordset);
             
         });
     });

@@ -5,11 +5,7 @@ module.exports = {
   development: {
     client: process.env.CLIENT,
     connection: {
-      host: '172.16.20.210',
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE,
-        port: parseInt(process.env.PORT, 10)
+      connStr = "Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;" //String de configuração de conexão
     }
   },
 
@@ -32,12 +28,7 @@ module.exports = {
   production: {
     client: process.env.CLIENT,
     connection: {
-      host: process.env.HOST,
-      database: process.env.DATABASE,
-      user:     process.env.USER,
-      password: process.env.PASSWORD,
-      port: parseInt(process.env.PORT, 10)
-      
+      connStr = "Server=glip-office.ddns.net,49170;Database=Vulkan;User Id=thiago;Password=K7fcX6wM;trustServerCertificate=true;" //String de configuração de conexão
     },
     pool: {
       min: 2,

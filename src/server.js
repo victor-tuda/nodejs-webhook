@@ -25,13 +25,13 @@ function insert (chave, tipo, valor, sql_column){
     }
 }
 
-var pool = sql.connect(connStr).then(
-    console.log(`Print POOL: ${pool}`)
-);
-
 
 // NETILIFY
 exports.handler = async (event, context) => {
+
+    var pool = sql.connect(connStr).then(
+        console.log(`Print POOL: ${pool}`)
+    );
 
     try{
         const body = JSON.parse(event.body)

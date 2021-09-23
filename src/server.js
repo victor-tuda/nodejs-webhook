@@ -16,10 +16,10 @@ const pool = await sql.connect(connStr);
 const request = pool.request();
 
 // Criando uma função assíncrona para conectar ao banco de dados
-async function messageHandler(){
+function messageHandler(){
     try {
-        await request.query('SELECT * FROM Webhook_FDV');
-        console.log(result)
+        request.query('SELECT * FROM Webhook_FDV');
+        console.log(result);
         return result;
     } catch (err) {
         console.error('SQL error', err);

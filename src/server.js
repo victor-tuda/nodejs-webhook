@@ -14,7 +14,7 @@ require('dotenv').config({
 // var database = require("./database/index.js");
 
 // Criando uma pool de conexão
-const pool = sql.ConnectionPool(connStr);
+const pool = new sql.ConnectionPool(connStr);
 const poolConnect = pool.connect();
 
 // NETILIFY

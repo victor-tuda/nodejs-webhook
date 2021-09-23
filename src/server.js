@@ -12,15 +12,13 @@ require('dotenv').config({
 
 
 // Criando uma pool de conexão
-const pool = new sql.ConnectionPool(connStr);
-const poolConnect = pool.connect();
+const pool = await sql.connect(connStr);
+const request = pool.request();
 
 // Criando uma função assíncrona para conectar ao banco de dados
 async function messageHandler(){
-    await poolConnect; // ensures that the pool has been created
     try {
-        const request = pool.request(); // or: new sql.Request(pool1)
-        const result = await request.query('SELECT * FROM Webhook_FDV')
+        await request.query('SELECT * FROM Webhook_FDV');
         console.log(result)
         return result;
     } catch (err) {

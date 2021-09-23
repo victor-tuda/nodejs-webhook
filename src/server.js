@@ -10,9 +10,7 @@ require('dotenv').config({
     path: __dirname + './../.env'
 });
 
-// Criando uma pool de conexão
-var pool = await sql.connect(connStr);
-var request = new sql.Request(pool);
+
 
 
 // Criando uma função assíncrona para conectar ao banco de dados
@@ -31,11 +29,24 @@ function messageHandler(request){
 
 // NETILIFY
 exports.handler = async (event, context) => {
-    const body = JSON.parse(event.body)
-    const logbook = body.Logbook[body.Logbook.length - 1];
-
-    messageHandler(request);
-
-    console.dir(`Linha Inserida: ${pool.rowsAffected}`) 
-
-};
+    try {
+      const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
+      const jsonString = JSON.stringify(body);
+      const logbook = JSON.stringify(body.Logbook[body.Logbook.length - 1]);
+      console.log(jsonString);
+  
+      let pool = await sql.connect(connStr); 
+      let result = await pool.request()
+        .input(code, NVarChar(4000), `${body.Code}`)
+        .query(`INSERT INTO Webhook_FDV (CODE) VALUES (@code)`)
+  
+      console.dir(`Linha Inserida: ${result.rowsAffected}`)
+    }
+  
+    catch (err) {
+      console.log(`Code: ${body.Code}\nErro na Inserção: ${err}`)
+      return { statusCode: 500, body: err.toString() };
+    }
+  
+  };
+  

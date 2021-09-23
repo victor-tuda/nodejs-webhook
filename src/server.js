@@ -20,29 +20,32 @@ function insert (chave, tipo, valor, sql_column){
         result.query(`INSERT INTO Webhook_FDV (${sql_column}) VALUES (@${chave})`)
     }
     catch {
-        console.log('Erro ao inserir body.Code');
+        console.log(`Erro ao inserir body.${chave}`);
         console.log(`CODE: ${body.Code}`)
     }
 }
 
+let pool = await sql.connect(connStr)
+let result =  pool.request()
+
 
 // NETILIFY
 exports.handler = async (event, context) => {
+
     try{
-        const body = JSON.parse(event.body);
+        const body = JSON.parse(event.body)
+        .then(
+            insert('code', 'sql.NChar(150)', body.Code, 'CODE')
+        ).then(
+            insert('title', 'sql.NChar(150)', body.Title, 'TITLE')
+        ).then(
+            insert('value', 'sql.Float', body.Value, 'VALUE')
+        );
         const logbook = body.Logbook[body.Logbook.length - 1];
     }
     catch{
         console.log('Não foi possível capturar o body da requisição')
     }
-
-    let pool = await sql.connect(connStr)
-
-    let result = await pool.request()
-
-    insert('code', 'sql.NChar(150)', body.Code, 'CODE') = await result;
-    insert('title', 'sql.NChar(150)', body.Title, 'TITLE') = await result;
-    insert('value', 'sql.Float', body.Value, 'VALUE') = await result;
 
 
 

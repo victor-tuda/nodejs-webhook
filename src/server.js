@@ -25,7 +25,7 @@ function insert (chave, tipo, valor, sql_column){
     }
 }
 
-var pool = await sql.connect(connStr).then(
+var pool = sql.connect(connStr).then(
     console.log(pool)
 );
 

@@ -13,12 +13,12 @@ require('dotenv').config({
 // Adicionando as comunicações com o banco de dados KNEXJS
 // var database = require("./database/index.js");
 
-// Criando uma pool de conexão
-const pool = new sql.ConnectionPool(connStr);
-const poolConnect = pool.connect();
-
 // NETILIFY
 exports.handler = async (event, context) => {
+    // Criando uma pool de conexão
+    const pool = new sql.ConnectionPool(connStr);
+    const poolConnect = pool.connect();
+
     const body = JSON.parse(event.body)
     const logbook = body.Logbook[body.Logbook.length - 1];
 

@@ -26,7 +26,7 @@ function insert (chave, tipo, valor, sql_column){
 }
 
 var pool = sql.connect(connStr).then(
-    console.log(pool)
+    console.log(`Print POOL: ${pool}`)
 );
 
 
@@ -50,6 +50,6 @@ exports.handler = async (event, context) => {
 
 
 
-    console.dir(`Linha Inserida: ${result.rowsAffected}`) 
+    console.dir(`Linha Inserida: ${pool.rowsAffected}`) 
 
 };

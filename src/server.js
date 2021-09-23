@@ -15,9 +15,9 @@ require('dotenv').config({
 
 // NETILIFY
 exports.handler = async (event, context) => {
-    // Criando uma pool de conexão
-    const pool = new sql.ConnectionPool(connStr);
-    const poolConnect = pool.connect();
+// Criando uma pool de conexão
+const pool = new sql.ConnectionPool(connStr);
+const poolConnect = pool.connect();
 
     const body = JSON.parse(event.body)
     const logbook = body.Logbook[body.Logbook.length - 1];
@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
         try {
             const request = pool.request(); // or: new sql.Request(pool1)
             const result = await request.query('SELECT * FROM Webhook_FDV')
-            console.dir(result)
+            console.log(result)
             return result;
         } catch (err) {
             console.error('SQL error', err);

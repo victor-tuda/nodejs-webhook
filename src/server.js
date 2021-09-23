@@ -25,7 +25,7 @@ function insert (chave, tipo, valor, sql_column){
     }
 }
 
-let pool = await sql.connect(connStr)
+let pool = sql.connect(connStr)
 let result =  pool.request()
 
 

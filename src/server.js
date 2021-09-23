@@ -25,7 +25,10 @@ function insert (chave, tipo, valor, sql_column){
     }
 }
 
-let pool = await sql.connect(connStr);
+var pool = await sql.connect(connStr).then(
+    console.log(pool)
+);
+
 
 // NETILIFY
 exports.handler = async (event, context) => {

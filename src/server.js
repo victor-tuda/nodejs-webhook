@@ -10,13 +10,13 @@ require('dotenv').config({
     path: __dirname + './../.env'
 });
 
-
 // Criando uma pool de conexão
-const pool = await sql.connect(connStr);
-const request = pool.request();
+var pool = await sql.connect(connStr);
+var request = new sql.Request(pool);
+
 
 // Criando uma função assíncrona para conectar ao banco de dados
-function messageHandler(){
+function messageHandler(request){
     try {
         request.query('SELECT * FROM Webhook_FDV');
         console.log(result);
@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
     const body = JSON.parse(event.body)
     const logbook = body.Logbook[body.Logbook.length - 1];
 
-    messageHandler();
+    messageHandler(request);
 
     console.dir(`Linha Inserida: ${pool.rowsAffected}`) 
 

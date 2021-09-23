@@ -1,5 +1,5 @@
 // Criando um Debugger Morgan
-const morgan = require('morgan');
+// const morgan = require('morgan');
 
 // Criando uma String de Conexão com o Banco de Dados
 var connStr = `Server=${process.env.HOST},${process.env.PORT};Database= ${process.env.DATABASE};User Id= ${process.env.USER};Password=${process.env.PASSWORD};trustServerCertificate=true;`;

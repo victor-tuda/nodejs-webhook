@@ -16,8 +16,8 @@ require('dotenv').config({
 
 function insert (chave, tipo, valor, sql_column){
     try{
-        result.input(`${chave}`, `${tipo}`, `${valor}`);
-        result.query(`INSERT INTO Webhook_FDV (${sql_column}) VALUES (@${chave})`)
+        pool.input(`${chave}`, `${tipo}`, `${valor}`);
+        pool.query(`INSERT INTO Webhook_FDV (${sql_column}) VALUES (@${chave})`)
     }
     catch {
         console.log(`Erro ao inserir body.${chave}`);
@@ -25,9 +25,7 @@ function insert (chave, tipo, valor, sql_column){
     }
 }
 
-let pool = sql.connect(connStr)
-let result =  pool.request()
-
+let pool = await sql.connect(connStr);
 
 // NETILIFY
 exports.handler = async (event, context) => {

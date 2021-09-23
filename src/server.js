@@ -13,39 +13,26 @@ require('dotenv').config({
 // Adicionando as comunicações com o banco de dados KNEXJS
 // var database = require("./database/index.js");
 
-
-function insert (chave, tipo, valor, sql_column){
-    try{
-        pool.input(`${chave}`, `${tipo}`, `${valor}`);
-        pool.query(`INSERT INTO Webhook_FDV (${sql_column}) VALUES (@${chave})`)
-    }
-    catch {
-        console.log(`Erro ao inserir body.${chave}`);
-        console.log(`CODE: ${body.Code}`)
-    }
-}
-
+// Criando uma pool de conexão
+const pool = sql.ConnectionPool(connStr);
+const poolConnect = pool.connect();
 
 // NETILIFY
 exports.handler = async (event, context) => {
+    const body = JSON.parse(event.body)
+    const logbook = body.Logbook[body.Logbook.length - 1];
 
-    var pool = sql.connect(connStr).then(
-        console.log(`Print POOL: ${pool}`)
-    );
-
-    try{
-        const body = JSON.parse(event.body)
-        .then(
-            insert('code', 'sql.NChar(150)', body.Code, 'CODE')
-        ).then(
-            insert('title', 'sql.NChar(150)', body.Title, 'TITLE')
-        ).then(
-            insert('value', 'sql.Float', body.Value, 'VALUE')
-        );
-        const logbook = body.Logbook[body.Logbook.length - 1];
-    }
-    catch{
-        console.log('Não foi possível capturar o body da requisição')
+    // Criando uma função assíncrona para conectar ao banco de dados
+    async function messageHandler(){
+        await poolConnect; // ensures that the pool has been created
+        try {
+            const request = pool.request(); // or: new sql.Request(pool1)
+            const result = await request.query('SELECT * FROM Webhook_FDV')
+            console.dir(result)
+            return result;
+        } catch (err) {
+            console.error('SQL error', err);
+        }
     }
 
 

@@ -52,7 +52,7 @@ exports.handler = async (event, context) => {
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
       @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document,\
-      @company_code, @company_name, @company_segment, @company_document, @company_state_document, @company_address, @company_latitude, @company_longitude\
+      @company_code, @company_name, @company_segment, @company_document, @company_state_document, @company_address, @company_latitude, @company_longitude,\
       @owner_vendor_code, @owner_vendor_name, @owner_vendor_email, @owner_vendor_internalcode
       )`)
 

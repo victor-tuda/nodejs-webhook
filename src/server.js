@@ -5,7 +5,7 @@ var sql = require("mssql");
 // Crindo uma função de conexão
 const conexao_db = async function() {
   const pool = await sql.connect(connStr);
-  const result = pool.request();
+  const result = new sql.Request();
 
   return result
 }

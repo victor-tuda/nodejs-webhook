@@ -69,7 +69,7 @@ exports.handler = async (event, context) => {
       @pipeline_code, @pipeline_name,\
       @step_code, @step_name,\
       @sales_channel_code, @sales_channel_name\
-      )`)
+      )`) //
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 
 

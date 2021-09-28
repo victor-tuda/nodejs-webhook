@@ -19,9 +19,9 @@ exports.handler = async (event, context) => {
   .input('logbook_code', sql.NVarChar(150), logbook.Code)
   .input('logbook_type', sql.NVarChar(150), logbook.Type)
 
-  .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER\
+  .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE)
-    VALUES (@code, @title, @value, @status, @answer\
+    VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type)`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

@@ -12,7 +12,7 @@ const conexao_db = async function() {
 
 // NETILIFY
 exports.handler = async function(event, context) {
-  request = conexao_db();
+  request = await conexao_db();
 
   const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
 

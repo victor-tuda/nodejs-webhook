@@ -16,23 +16,24 @@ require('dotenv').config({
 
 // NETILIFY
 exports.handler = async function(event, context) {
-  console.log(event)
+  const body = event.body; //Criando uma variável para capturar o body da requisição
     try {
-      const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
-  
-      let pool = await sql.connect(connStr);
-      let result = await pool.request();
+      const pool = await sql.connect(connStr);
+      const result = pool.request();
 
-      result.input(code, NVarChar(4000), `${body.Code}`)
-      result.query(`INSERT INTO Webhook_FDV (CODE) VALUES (@code)`)
-  
-      console.dir(`Linha Inserida: ${result.rowsAffected}`)
+      result.input(code, NVarChar(4000), `${body.Code}`);
+      result.query(`INSERT INTO Webhook_FDV (CODE) VALUES (@code)`);
     }
-  
     catch(err) {
       console.log(`Code: ${body.Code}\nErro na Response: ${err}`)
       return { statusCode: 500, body: err.toString() }
     }
+
+
+  
+      console.dir(`Linha Inserida: ${result.rowsAffected}`)
+  
+
   
   };
   

@@ -53,7 +53,7 @@ exports.handler = async (event, context) => {
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
       @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document,\
       @company_code, @company_name, @company_segment, @company_document, @company_state_document, @company_address, @company_latitude, @company_longitude,\
-      @owner_vendor_code, @owner_vendor_name, @owner_vendor_email, @owner_vendor_internalcode
+      @owner_vendor_code, @owner_vendor_name, @owner_vendor_email, @owner_vendor_internalcode\
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

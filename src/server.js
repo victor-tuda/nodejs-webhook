@@ -3,16 +3,20 @@ var connStr = `Server=${process.env.HOST},${process.env.PORT};Database= ${proces
 var sql = require("mssql");
 
 // Crindo uma função de conexão
-const conexao_db = async function() {
-  const pool = await sql.connect(connStr);
+conexao_db = sql.connect(connStr, function (err) {
+  if (err){
+    console.log(`Erro na conexão com o Banco de Dados: ${err}`)
+  }
   const result = new sql.Request();
 
-  return result
-}
+  return result;
+  }
+)
+
 
 // NETILIFY
 exports.handler = async function(event, context) {
-  request = await conexao_db();
+  request = conexao_db();
 
   const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
 

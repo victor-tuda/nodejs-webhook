@@ -49,13 +49,17 @@ exports.handler = async (event, context) => {
   .input('step_code', sql.NVarChar(150), body.Step.Code)
   .input('step_name', sql.NVarChar(150), body.Step.Name)
 
+  .input('sales_channel_code', sql.NVarChar(150), body.Sales_Channel.Code)
+  .input('sales_channel_name', sql.NVarChar(150), body.Sales_Channel.Name)
+
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE, LOGBOOK_TEXT, LOGBOOK_CREATED_AT,\
     CONTACT_CODE, CONTACT_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_SMARTPHONE, CONTACT_ROLE, CONTACT_DOCUMENT,\
     COMPANY_CODE, COMPANY_NAME, COMPANY_SEGMENT, COMPANY_DOCUMENT, COMPANY_STATE_DOCUMENT, COMPANY_ADDRESS, COMPANY_LATITUDE, COMPANY_LONGITUDE,\
     OWNER_VENDOR_CODE, OWNER_VENDOR_NAME, OWNER_VENDOR_EMAIL, OWNER_VENDOR_INTERNALCODE,\
     PIPELINE_CODE, PIPELINE_NAME,\
-    STEP_CODE, STEP_NAME\
+    STEP_CODE, STEP_NAME,\
+    SALES_CHANNEL_CODE, SALES_CHANNEL_NAME\
     \)
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
@@ -63,7 +67,8 @@ exports.handler = async (event, context) => {
       @company_code, @company_name, @company_segment, @company_document, @company_state_document, @company_address, @company_latitude, @company_longitude,\
       @owner_vendor_code, @owner_vendor_name, @owner_vendor_email, @owner_vendor_internalcode,\
       @pipeline_code, @pipeline_name,\
-      @step_code, @step_name\
+      @step_code, @step_name,\
+      @sales_channel_code, @sales_channel_name\
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

@@ -10,26 +10,29 @@ require('dotenv').config({
     path: __dirname + './../.env'
 });
 
+// Crindo uma função de conexão
+const conexao_db = function() {
+  const pool = await sql.connect(connStr);
+  const result = pool.request();
+
+  return result
+}
+
 
 // Adicionando as comunicações com o banco de dados KNEXJS
 // var database = require("./database/index.js");
 
 // NETILIFY
 exports.handler = async function(event, context) {
+  request = conexao_db();
+  console.log(request);
+
   const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
   console.log(body);
   console.log(body.Code);
-    try {
-      const pool = await sql.connect(connStr);
-      const result = pool.request();
 
-      result.input(code, NVarChar(4000), `${body.Code}`);
-      result.query(`INSERT INTO Webhook_FDV (CODE) VALUES (@code)`);
-    }
-    catch(err) {
-      console.log(`Code: ${body.Code}\nErro na Response: ${err}`)
-      return { statusCode: 500, body: err.toString() }
-    }
+  request.input(code, NVarChar(4000), `${body.Code}`);
+  request.query(`INSERT INTO Webhook_FDV (CODE) VALUES (@code)`);
 
 
   

@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE, LOGBOOK_TEXT, LOGBOOK_CREATED_AT,\
     CONTACT_CODE, CONTACT_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_SMARTPHONE, CONTACT_ROLE, CONTACT_DOCUMENT)
-    VALUES (@code, @title, @value, @status, @answer
+    VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
       @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document
       )`)

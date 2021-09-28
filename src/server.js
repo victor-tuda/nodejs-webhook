@@ -16,7 +16,7 @@ exports.handler = async function(event, context) {
 
   const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
 
-  request.input('code', NVarChar(150), `${body.Code}`);
+  request.input('code', sql.NVarChar(150), `${body.Code}`);
   request.query(`INSERT INTO Webhook_FDV (CODE) VALUES (${body.Code})`);
   
   console.dir(`Linha Inserida: ${result.rowsAffected}`)

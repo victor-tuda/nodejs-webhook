@@ -8,8 +8,6 @@ exports.handler = async (event, context) => {
   const body = JSON.parse(event.body);
   const logbook = body.Logbook[body.Logbook.length - 1];
 
-  console.log(body);
-
   let pool = await sql.connect(connStr);
   let result = await pool.request()
   .input('code', sql.NChar(150), body.Code, 'CODE')

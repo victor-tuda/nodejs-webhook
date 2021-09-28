@@ -13,12 +13,10 @@ const conexao_db = async function() {
 // NETILIFY
 exports.handler = async function(event, context) {
   request = conexao_db();
-  console.log(`REQUEST: ${request}`);
-  console.log(`CONTEXT: ${context}`);
 
   const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
 
-  request.input(code, NVarChar(4000), `${body.Code}`);
+  request.input('code', NVarChar(150), `${body.Code}`);
   request.query(`INSERT INTO Webhook_FDV (CODE) VALUES (${body.Code})`);
   
   console.dir(`Linha Inserida: ${result.rowsAffected}`)

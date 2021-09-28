@@ -15,7 +15,8 @@ require('dotenv').config({
 // var database = require("./database/index.js");
 
 // NETILIFY
-exports.handler = async (event, context) => {
+exports.handler = async function(event, context) {
+  console.log(event)
     try {
       const body = JSON.parse(event.body); //Criando uma variável para capturar o body da requisição
   

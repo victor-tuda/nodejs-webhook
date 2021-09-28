@@ -17,6 +17,7 @@ require('dotenv').config({
 // NETILIFY
 exports.handler = async function(event, context) {
   const body = event.body; //Criando uma variável para capturar o body da requisição
+  console.log(body);
     try {
       const pool = await sql.connect(connStr);
       const result = pool.request();

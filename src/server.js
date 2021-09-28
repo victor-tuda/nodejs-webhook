@@ -1,3 +1,6 @@
+
+'use strict'
+
 // Criando um Debugger Morgan
 // const morgan = require('morgan');
 
@@ -45,7 +48,7 @@ exports.handler = async (event, context) => {
   
     catch (err) {
       console.log(`Code: ${body.Code}\nErro na Inserção: ${err}`)
-      return { statusCode: 500, body: err.toString() };
+      return { statusCode: 500, body: err.toString() }
     }
   
   };

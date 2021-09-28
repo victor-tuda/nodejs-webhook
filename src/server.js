@@ -10,9 +10,9 @@ exports.handler = async (event, context) => {
 
   let pool = await sql.connect(connStr);
   let result = await pool.request()
-  .input('code', 'sql.NChar(150)', body.Code, 'CODE')
-  .input('title', 'sql.NChar(150)', body.Title, 'TITLE')
-  .input('value', 'sql.Float', body.Value, 'VALUE')
+  .input('code', sql.NChar(150), body.Code, 'CODE')
+  .input('title', sql.NChar(150), body.Title, 'TITLE')
+  .input('value', sql.Float, body.Value, 'VALUE')
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE) VALUES (@code, @title, @value)`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

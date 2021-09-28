@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
     CONTACT_CODE, CONTACT_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_SMARTPHONE, CONTACT_ROLE, CONTACT_DOCUMENT)
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
-      @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document
+      @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document\
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

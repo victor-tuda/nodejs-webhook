@@ -38,17 +38,22 @@ exports.handler = async (event, context) => {
   .input('company_latitude', sql.NVarChar(150), body.Contact.Company.Latitude)
   .input('company_longitude', sql.NVarChar(150), body.Contact.Company.Longitude)
 
-
+  .input('owner_vendor_code', sql.NVarChar(150), body.Owner_Vendor.Code)
+  .input('owner_vendor_name', sql.NVarChar(150), body.Owner_Vendor.Name)
+  .input('owner_vendor_email', sql.NVarChar(150), body.Owner_Vendor.Email)
+  .input('owner_vendor_internalcode', sql.NVarChar(150), body.Owner_Vendor.InternalCode)
 
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE, LOGBOOK_TEXT, LOGBOOK_CREATED_AT,\
     CONTACT_CODE, CONTACT_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_SMARTPHONE, CONTACT_ROLE, CONTACT_DOCUMENT,\
-    COMPANY_CODE, COMPANY_NAME, COMPANY_SEGMENT, COMPANY_DOCUMENT, COMPANY_STATE_DOCUMENT, COMPANY_ADDRESS, COMPANY_LATITUDE, COMPANY_LONGITUDE\
-    )
+    COMPANY_CODE, COMPANY_NAME, COMPANY_SEGMENT, COMPANY_DOCUMENT, COMPANY_STATE_DOCUMENT, COMPANY_ADDRESS, COMPANY_LATITUDE, COMPANY_LONGITUDE,\
+    OWNER_VENDOR_CODE, OWNER_VENDOR_NAME, OWNER_VENDOR_EMAIL, OWNER_VENDOR_INTERNALCODE
+    \)
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
       @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document,\
       @company_code, @company_name, @company_segment, @company_document, @company_state_document, @company_address, @company_latitude, @company_longitude\
+      @owner_vendor_code, @owner_vendor_name, @owner_vendor_email, @owner_vendor_internalcode
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

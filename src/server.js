@@ -8,7 +8,9 @@ exports.handler = async (event, context) => {
   const body = JSON.parse(event.body);
   const logbook = body.Logbook[body.Logbook.length - 1];
 
-  let pool = await sql.connect(connStr);
+  let pool = await sql.connect(connStr)
+  .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));
+
   let result = await pool.request()
   .input('code', sql.NChar(150), body.Code, 'CODE')
   .input('title', sql.NChar(150), body.Title, 'TITLE')
@@ -56,8 +58,6 @@ exports.handler = async (event, context) => {
   .input('updated_at', sql.NVarChar(150), body.Updated_At)
   .input('closing_expectations', sql.NVarChar(150), body.Closing_Expectations)
   .input('closed_at', sql.NVarChar(150), body.Closed_At)
-
-  .input('personalizado_nome_comprador', sql.NVarChar(150), body.Contact.CustomFields['Nome do comprador'])
 
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE, LOGBOOK_TEXT, LOGBOOK_CREATED_AT,\

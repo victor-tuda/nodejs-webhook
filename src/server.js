@@ -2,11 +2,12 @@
 var connStr = `Server=${process.env.HOST},${process.env.PORT};Database= ${process.env.DATABASE};User Id= ${process.env.USER};Password=${process.env.PASSWORD};trustServerCertificate=true;`;
 var sql = require("mssql");
 
-
 // NETILIFY
 exports.handler = async (event, context) => {
   const body = JSON.parse(event.body);
   const logbook = body.Logbook[body.Logbook.length - 1];
+
+  console.log(`Print: ${body.Contact.Custom_Fields}`)
 
   let pool = await sql.connect(connStr)
   .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));

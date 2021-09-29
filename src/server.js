@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   const body = JSON.parse(event.body);
   const logbook = body.Logbook[body.Logbook.length - 1];
 
-  console.log(`Print: ${body.Contact.Custom_Fields}`)
+  console.log(`Print: ${body.Contact.Custom_Fields['Nome do comprador']}`);
 
   let pool = await sql.connect(connStr)
   .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));
@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
     STEP_CODE, STEP_NAME,\
     SALES_CHANNEL_CODE, SALES_CHANNEL_NAME,\
     CREATED_AT, UPDATED_AT, CLOSING_EXPECTATIONS, CLOSED_AT\
-    \ )
+    )\
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
       @contact_code, @contact_name, @contact_email, @contact_phone, @contact_smartphone, @contact_role, @contact_document,\

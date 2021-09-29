@@ -4,10 +4,24 @@ var sql = require("mssql");
 
 // NETILIFY
 exports.handler = async (event, context) => {
-  const body = JSON.parse(event.body);
-  const logbook = body.Logbook[body.Logbook.length - 1];
+  let body = JSON.parse(event.body);
+  let logbook = body.Logbook[body.Logbook.length - 1];
 
-  console.log(`Print: ${body.Contact.Custom_Fields['Nome do comprador']}`);
+  let personalizados = {
+    "nome_comprador": body.Contact.Custom_Fields['Nome do comprador'],
+    "tel_comprador": body.Contact.Custom_Fields['Telefone do comprador'],
+    "cod_organizacao": body.Contact.Organization.Custom_Fields['Codigo Cliente'],
+    "nome_organizacao": body.Contact.Organization.Custom_Fields['Nome Cliente'],
+    "estado_organizacao": body.Contact.Organization.Custom_Fields['Estado']
+  }
+
+  for (let [key, value] of Object.entries(personalizados)){
+    if (value === undefined){
+      personalizados[key] = 'Nulo'
+    }
+  }
+
+  console.log(body.Contact.Custom_Fields['Nome do comprador'])
 
   let pool = await sql.connect(connStr)
   .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));

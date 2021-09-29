@@ -67,8 +67,7 @@ exports.handler = async (event, context) => {
     PIPELINE_CODE, PIPELINE_NAME,\
     STEP_CODE, STEP_NAME,\
     SALES_CHANNEL_CODE, SALES_CHANNEL_NAME,\
-    CREATED_AT, UPDATED_AT, CLOSING_EXPECTATIONS, CLOSED_AT,
-    PERSONALIZADO_NOME_COMPRADOR\
+    CREATED_AT, UPDATED_AT, CLOSING_EXPECTATIONS, CLOSED_AT\
     \ )
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
@@ -78,8 +77,7 @@ exports.handler = async (event, context) => {
       @pipeline_code, @pipeline_name,\
       @step_code, @step_name,\
       @sales_channel_code, @sales_channel_name,\
-      @created_at, @updated_at, @closing_expectations, @closed_at,\
-      @personalizado_nome_comprador\
+      @created_at, @updated_at, @closing_expectations, @closed_at\
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

@@ -79,14 +79,6 @@ exports.handler = async (event, context) => {
       @created_at, @updated_at, @closing_expectations, @closed_at\
       )`)
 
-      try{
-        let result_personalizado = await pool.request()
-        .input('personalizado_nome_comprador', sql.NVarChar(150), body.Contact.Custom_Fields['Nome do comprador'])
-        .query('INSERT INTO Webhook_FDV (PERSONALIZADO_NOME_COMPRADOR) VALUES @personalizado_nome_comprador')
-      }
-      catch{}
-
-
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 
 
 };

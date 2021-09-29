@@ -57,6 +57,8 @@ exports.handler = async (event, context) => {
   .input('closing_expectations', sql.NVarChar(150), body.Closing_Expectations)
   .input('closed_at', sql.NVarChar(150), body.Closed_At)
 
+  .input('personalizado_nome_comprador', sql.NVarChar(150), body.Contact.CustomFields['Nome do comprador'])
+
   .query(`INSERT INTO Webhook_FDV (CODE, TITLE, VALUE, STATUS, ANSWER,\
     LOGBOOK_CODE, LOGBOOK_TYPE, LOGBOOK_TEXT, LOGBOOK_CREATED_AT,\
     CONTACT_CODE, CONTACT_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_SMARTPHONE, CONTACT_ROLE, CONTACT_DOCUMENT,\
@@ -65,7 +67,8 @@ exports.handler = async (event, context) => {
     PIPELINE_CODE, PIPELINE_NAME,\
     STEP_CODE, STEP_NAME,\
     SALES_CHANNEL_CODE, SALES_CHANNEL_NAME,\
-    CREATED_AT, UPDATED_AT, CLOSING_EXPECTATIONS, CLOSED_AT\
+    CREATED_AT, UPDATED_AT, CLOSING_EXPECTATIONS, CLOSED_AT,
+    PERSONALIZADO_NOME_COMPRADOR\
     \ )
     VALUES (@code, @title, @value, @status, @answer,\
       @logbook_code, @logbook_type, @logbook_text, @logbook_created_at,\
@@ -75,7 +78,8 @@ exports.handler = async (event, context) => {
       @pipeline_code, @pipeline_name,\
       @step_code, @step_name,\
       @sales_channel_code, @sales_channel_name,\
-      @created_at, @updated_at, @closing_expectations, @closed_at\
+      @created_at, @updated_at, @closing_expectations, @closed_at,\
+      @personalizado_nome_comprador\
       )`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 

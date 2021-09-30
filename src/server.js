@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
   .input('closed_at', sql.NChar(150), body.Updated_At, 'CLOSED_AT')
   
   .query(`INSERT INTO Webhook (UA_NUM, STATUS, LOGBOOK_DESC, UPDATED_AT, CREATED_AT)\
-    VALUES (@ua_num, @status, @logbook_text, @updated_at, @closed_at`)
+    VALUES (@ua_num, @status, @logbook_text, @updated_at, @closed_at)`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 
 

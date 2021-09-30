@@ -23,5 +23,4 @@ exports.handler = async (event, context) => {
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 
 
-  pool.close;
 };

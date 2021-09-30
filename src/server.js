@@ -16,8 +16,8 @@ exports.handler = async (event, context) => {
   .input('ua_num', sql.NChar(150), body.Code, 'UA_NUM')
   .input('status', sql.NChar(150), body.Status, 'STATUS')
   .input('logbook_text', sql.NVarChar(150), logbook.Text)
-  .input('updated_at', sql.NChar(150), body.Updated_At, 'UPDATED_AT')
-  .input('closed_at', sql.NChar(150), body.Updated_At, 'CLOSED_AT')
+  .input('updated_at', sql.Date, body.Updated_At, 'UPDATED_AT')
+  .input('closed_at', sql.Date, body.Updated_At, 'CLOSED_AT')
   
   .query(`INSERT INTO Webhook (UA_NUM, STATUS, LOGBOOK_DESC, UPDATED_AT, CREATED_AT)\
     VALUES (@ua_num, @status, @logbook_text, @updated_at, @closed_at)`)

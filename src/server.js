@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
   .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));
 
   let result = await pool.request()
-  .input('ua_num', sql.NChar(150), body.Code, 'UA_NUM')
+  .input('ua_num', sql.NChar(150), body.Title, 'UA_NUM')
   .input('status', sql.NChar(150), body.Status, 'STATUS')
   .input('step_code', sql.NChar(150), body.Step.Code, 'STEP_CODE')
   .input('updated_at', sql.Date, body.Updated_At, 'UPDATED_AT')

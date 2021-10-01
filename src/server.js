@@ -5,7 +5,6 @@ var sql = require("mssql");
 // NETILIFY
 exports.handler = async (event, context) => {
   let body = JSON.parse(event.body);
-  let logbook = body.Logbook[body.Logbook.length - 1];
 
   let pool = await sql.connect(connStr)
   .catch(err => console.log("Erro de conexão com o Banco de Dados " + err));

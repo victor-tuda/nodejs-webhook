@@ -14,12 +14,11 @@ exports.handler = async (event, context) => {
   .input('ua_num', sql.NChar(150), body.Code, 'UA_NUM')
   .input('status', sql.NChar(150), body.Status, 'STATUS')
   .input('step_code', sql.NChar(150), body.Step.Code, 'STEP_CODE')
-  .input('logbook_text', sql.NVarChar(150), logbook.Text)
   .input('updated_at', sql.Date, body.Updated_At, 'UPDATED_AT')
   .input('closed_at', sql.Date, body.Updated_At, 'CLOSED_AT')
   
-  .query(`INSERT INTO Webhook (UA_NUM, STATUS, STEP_CODE, LOGBOOK_DESC, UPDATED_AT, CLOSED_AT)\
-    VALUES (@ua_num, @status, @step_code, @logbook_text, @updated_at, @closed_at)`)
+  .query(`INSERT INTO Webhook (UA_NUM, STATUS, STEP_CODE, UPDATED_AT, CLOSED_AT)\
+    VALUES (@ua_num, @status, @step_code, @updated_at, @closed_at)`)
 
   console.dir(`Linha Inserida: ${result.rowsAffected}`) 
 
